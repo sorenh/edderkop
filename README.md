@@ -3,6 +3,7 @@ Web crawler
 ("edderkop" is the Danish word for "spider")
 
 [![Travis-CI Status](https://travis-ci.org/sorenh/edderkop.svg)](https://travis-ci.org/sorenh/edderkop)
+[![codecov.io](https://codecov.io/github/sorenh/edderkop/coverage.svg?branch=master)](https://codecov.io/github/sorenh/edderkop?branch=master)
 
 The easiest way to run it is with Docker:
 

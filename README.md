@@ -21,6 +21,6 @@ Any other output format from Graphviz works, too.
 
 TODO:
 
-    JSON output for use with d3.js.
-    Differentiate nodes based on whether they're images, links, scripts, etc.
-    Fetch images and include them in the output from Graphviz
+ *  JSON output for use with d3.js.
+ *  Differentiate nodes based on whether they're images, links, scripts, etc.
+ * Fetch images and include them in the output from Graphviz

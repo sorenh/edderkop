@@ -1,6 +1,6 @@
 Web crawler
 
-![Travis status](https://travis-ci.org/sorenh/edderkop.svg)[https://travis-ci.org/sorenh/edderkop]
+[![Travis-CI Status](https://travis-ci.org/sorenh/edderkop.svg)](https://travis-ci.org/sorenh/edderkop)
 
 The easiest way to run it is with Docker:
 

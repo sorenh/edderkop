@@ -64,6 +64,8 @@ def data():
             with open(os.path.join(os.path.dirname(__file__), 'web_data', 'index.html'), 'r') as fp:
                 yield fp.read()
 
+            yield '<script>setSite("%s");</script>\n' % (url,)
+
             receiver = WebStream()
             crawler = Crawler(receiver)
             crawler.add_url(url)

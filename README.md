@@ -1,5 +1,7 @@
 Web crawler
 
+[See it live on Heroku!](http://edderkop.herokuapp.com/)
+
 ("edderkop" is the Danish word for "spider")
 
 [![Travis-CI Status](https://travis-ci.org/sorenh/edderkop.svg)](https://travis-ci.org/sorenh/edderkop)

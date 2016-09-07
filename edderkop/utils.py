@@ -13,6 +13,8 @@ def target_url(base_url, href):
 
     if '://' in href:
         return href
+    elif href.startswith('//'):
+        return '%s:%s' % (parsed_base_url.scheme, href)
     elif href.startswith('/'):
         return '%s://%s%s' % (parsed_base_url.scheme, parsed_base_url.netloc, href)
     else:

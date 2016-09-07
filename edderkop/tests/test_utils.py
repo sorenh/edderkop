@@ -23,6 +23,9 @@ class UtilTests(unittest.TestCase):
         self.assertEquals(edderkop.utils.target_url('http://example.com/foo', '#'), 'http://example.com/foo')
         self.assertEquals(edderkop.utils.target_url('http://example.com/foo/', '#'), 'http://example.com/foo/')
 
+    def test_target_url_remote_schemeless(self):
+        self.assertEquals(edderkop.utils.target_url('https://example.com/foo/', '//example2.com/foo'), 'https://example2.com/foo')
+
     def test_href_usable_unusual_scheme(self):
         self.assertFalse(edderkop.utils.href_usable('gopher://'))
 

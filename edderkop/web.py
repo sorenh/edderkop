@@ -15,7 +15,6 @@ class WebStream(object):
 
     def add_page(self, url):
         if url not in self.seen_nodes:
-            time.sleep(.5)
             self.seen_nodes.add(url)
             return ('<script>addPage("%s");</script>\n' % (url,))
         return ''
@@ -27,7 +26,6 @@ class WebStream(object):
             out += '<script>addPage("%s");</script>\n' % (target,)
 
         if (source, target) not in self.seen_links:
-            time.sleep(.5)
             self.seen_links.add((source, target))
             out += '<script>addLink({"source": "%s", "target": "%s"});</script>\n' % (source, target)
         return out
@@ -39,7 +37,6 @@ class WebStream(object):
             out += '<script>addImage("%s");</script>\n' % (img,)
 
         if (source, img) not in self.seen_links:
-            time.sleep(.5)
             self.seen_links.add((source, img))
             out += '<script>addLink({"source": "%s", "target": "%s"});</script>\n' % (source, img)
         return out
@@ -51,7 +48,6 @@ class WebStream(object):
             out += '<script>addPage("%s");</script>\n' % (script,)
 
         if (source, script) not in self.seen_links:
-            time.sleep(.5)
             self.seen_links.add((source, script))
             out += '<script>addLink({"source": "%s", "target": "%s"});</script>\n' % (source, script)
         return out

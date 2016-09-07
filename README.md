@@ -22,6 +22,10 @@ Example:
 
 Any other output format from Graphviz works, too.
 
+Alternatively, you can use the web based crawler which updates in real time:
+
+    docker run -p 5000:5000 sorenh/edderkop web
+
 TODO:
 
  *  JSON output for use with d3.js.

@@ -1,5 +1,4 @@
 import os.path
-import time
 
 from flask import Flask, Response, request
 

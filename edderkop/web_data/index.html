@@ -199,7 +199,7 @@ function addNode(node) {
 }
 
 function addLink(link) {
-  d3.select("#linkcount").text(nodes.length);
+  d3.select("#linkcount").text(links.length);
   links.push(link);
   update();
 }

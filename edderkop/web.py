@@ -24,7 +24,7 @@ class WebStream(object):
         out = ''
         if target not in self.seen_nodes:
             self.seen_nodes.add(target)
-            out +=  '<script>addPage("%s");</script>\n' % (target,)
+            out += '<script>addPage("%s");</script>\n' % (target,)
 
         if (source, target) not in self.seen_links:
             time.sleep(.5)
@@ -36,7 +36,7 @@ class WebStream(object):
         out = ''
         if img not in self.seen_nodes:
             self.seen_nodes.add(img)
-            out +=  '<script>addImage("%s");</script>\n' % (img,)
+            out += '<script>addImage("%s");</script>\n' % (img,)
 
         if (source, img) not in self.seen_links:
             time.sleep(.5)
@@ -48,7 +48,7 @@ class WebStream(object):
         out = ''
         if script not in self.seen_nodes:
             self.seen_nodes.add(script)
-            out +=  '<script>addPage("%s");</script>\n' % (script,)
+            out += '<script>addPage("%s");</script>\n' % (script,)
 
         if (source, script) not in self.seen_links:
             time.sleep(.5)

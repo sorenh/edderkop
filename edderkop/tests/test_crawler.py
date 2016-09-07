@@ -6,6 +6,7 @@ import mock
 import edderkop.crawler
 import edderkop.receivers.collector
 
+
 class FakeReceiver(object):
     pass
 
@@ -60,7 +61,8 @@ class Tests(unittest.TestCase):
             fetch_page.return_value = fp.read()
 
         url = 'http://not.example.com/fakeurl'
-        for _ in crawler.inspect_page(url): pass
+        for _ in crawler.inspect_page(url):
+            pass
 
         self.assertIn(url, collector.sitemap)
         self.assertIn('http://example.com/script.js', collector.sitemap[url].scripts)

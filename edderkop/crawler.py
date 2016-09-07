@@ -13,12 +13,12 @@ LOG = logging.getLogger(__name__)
 
 
 class Crawler(object):
-    def __init__(self):
+    def __init__(self, receiver):
         self.allowed_domains = set()
         self.urls = []
         self.completed_urls = []
         self._session = None
-        self.sitemap = edderkop.models.SiteMap()
+        self.receiver = receiver
 
     def add_urls(self, urls):
         map(self.add_url, urls)
@@ -46,29 +46,29 @@ class Crawler(object):
             url = self.urls.pop(0)
             LOG.debug('Handling URL: %s', url)
             self.completed_urls.append(url)
-            self.inspect_page(url)
-
-        return self.sitemap
+            for i in self.inspect_page(url):
+                yield i
 
     def inspect_page(self, url):
-        self.sitemap[url] = edderkop.models.Page(url)
+        yield self.receiver.add_page(url)
+
         page = self.fetch_page(url)
         soup = self.parse_page(page)
 
         for link in self.extract_links(soup, url):
             LOG.debug('%s included a link to %s', url, link)
-            self.sitemap[url].links.add(link)
+            yield self.receiver.add_link(url, link)
 
             if urlparse(link).hostname in self.allowed_domains:
                 self.add_url(link)
 
         for img in self.extract_images(soup, url):
             LOG.debug('%s included an image: %s', url, img)
-            self.sitemap[url].images.add(img)
+            yield self.receiver.add_image(url, img)
 
         for script in self.extract_scripts(soup, url):
             LOG.debug('%s included a script: %s', url, script)
-            self.sitemap[url].scripts.add(script)
+            yield self.receiver.add_script(url, script)
 
     def fetch_page(self, url):
         return self.session.get(url).content

@@ -57,10 +57,14 @@ class Crawler(object):
 
         for link in self.extract_links(soup, url):
             LOG.debug('%s included a link to %s', url, link)
-            yield self.receiver.add_link(url, link)
 
             if urlparse(link).hostname in self.allowed_domains:
                 self.add_url(link)
+                external = False
+            else:
+                external = True
+
+            yield self.receiver.add_link(url, link, external)
 
         for img in self.extract_images(soup, url):
             LOG.debug('%s included an image: %s', url, img)

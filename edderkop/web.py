@@ -18,11 +18,12 @@ class WebStream(object):
             return ('<script>addPage("%s");</script>\n' % (url,))
         return ''
 
-    def add_link(self, source, target):
+    def add_link(self, source, target, external):
         out = ''
         if target not in self.seen_nodes:
             self.seen_nodes.add(target)
-            out += '<script>addPage("%s");</script>\n' % (target,)
+            method = external and 'addExternalPage' or 'addPage'
+            out += '<script>%s("%s");</script>\n' % (method, target,)
 
         if (source, target) not in self.seen_links:
             self.seen_links.add((source, target))
@@ -44,7 +45,7 @@ class WebStream(object):
         out = ''
         if script not in self.seen_nodes:
             self.seen_nodes.add(script)
-            out += '<script>addPage("%s");</script>\n' % (script,)
+            out += '<script>addScript("%s");</script>\n' % (script,)
 
         if (source, script) not in self.seen_links:
             self.seen_links.add((source, script))

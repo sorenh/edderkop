@@ -8,7 +8,7 @@ class Collector(object):
     def add_page(self, url):
         self.sitemap[url] = edderkop.models.Page(url)
 
-    def add_link(self, source, target):
+    def add_link(self, source, target, external):
         self.sitemap[source].links.add(target)
 
     def add_image(self, source, img):
